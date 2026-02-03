@@ -35,7 +35,7 @@ function byName<Name extends AnalyticsEventName>(
 export function getFirstDaySessionCompletionRate(
   events: AnalyticsEvent[],
 ): PercentageMetric {
-  const signups = byName("user_registered", events);
+  const signups = byName(events, "user_registered");
   if (signups.length === 0) {
     return { numerator: 0, denominator: 0, percentage: 0 };
   }
@@ -81,12 +81,12 @@ export function getSessionRetentionRate(
 ): PercentageMetric {
   const { day } = options;
 
-  const signups = byName("user_registered", events);
+  const signups = byName(events, "user_registered");
   if (signups.length === 0) {
     return { numerator: 0, denominator: 0, percentage: 0 };
   }
 
-  const sessionStarts = byName("session_start", events);
+  const sessionStarts = byName(events, "session_start");
   let retainedUsers = 0;
 
   signups.forEach((signup) => {
@@ -127,9 +127,9 @@ export function getOnboardDepositSessionFunnel(
   deposited: PercentageMetric;
   firstSession: PercentageMetric;
 } {
-  const signups = byName("user_registered", events);
-  const deposits = byName("deposit_success", events);
-  const sessionStarts = byName("session_start", events);
+  const signups = byName(events, "user_registered");
+  const deposits = byName(events, "deposit_success");
+  const sessionStarts = byName(events, "session_start");
 
   const totalOnboarded = signups.length;
   const usersWithDeposit = new Set<string>();

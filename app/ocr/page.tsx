@@ -353,14 +353,13 @@ export default function OcrReviewPage() {
                               "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium capitalize",
                               submission.status === "approved" &&
                                 "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300",
-                              submission.status === "rejected" &&
+                              (submission.status === "fined" ||
+                                submission.status === "rejected") &&
                                 "bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-300",
                               submission.status === "review" &&
                                 "bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300",
                               submission.status === "pending" &&
                                 "bg-zinc-100 text-zinc-600 dark:bg-zinc-900 dark:text-zinc-300",
-                              submission.status === "fined" &&
-                                "bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-300",
                             ]
                               .filter(Boolean)
                               .join(" ")}

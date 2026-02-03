@@ -1,5 +1,5 @@
 export type AdminOcrAccuracyFlag = "pass" | "review" | "fail";
-export type AdminOcrStatus = "pending" | "approved" | "review" | "fined";
+export type AdminOcrStatus = "pending" | "approved" | "review" | "fined" | "rejected";
 export type AdminOcrAnalysisResult =
   | "clean"
   | "blurry"
